@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bryan — Developer &amp; Technical Consultant</title>
+<meta name="description" content="Portfolio of Bryan, developer and technical consultant.">
+
+<!--
+  ============================================================
+  HOW TO EDIT THIS FILE
+  ============================================================
+  Every spot you need to personalize is marked with a comment
+  like the one below. Search for "EDIT:" to find them all.
+
+  Sections, top to bottom:
+    1. Identity block (name, role, status line)   — search "EDIT: IDENTITY"
+    2. About paragraph                             — search "EDIT: ABOUT"
+    3. Skills groups                               — search "EDIT: SKILLS"
+    4. Projects                                    — search "EDIT: PROJECTS"
+    5. Experience timeline                         — search "EDIT: EXPERIENCE"
+    6. Contact links + footer                      — search "EDIT: CONTACT"
+
+  To publish on GitHub Pages:
+    1. Create a repo (e.g. "yourname.github.io" for a root site,
+       or any name for a project site).
+    2. Put this file in it, named exactly "index.html".
+    3. Push to GitHub.
+    4. In the repo: Settings → Pages → Source → deploy from the
+       main branch, root folder.
+    5. Your site goes live at the URL GitHub shows you there.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #EDEAE2;
+    --paper-2: #E2DED2;
+    --ink: #1B231F;
+    --ink-soft: #4F594F;
+    --ink-faint: #8A8B7D;
+    --line: #B7AF9C;
+    --accent: #3E6259;
+    --accent-warm: #B75B2E;
+    --max: 780px;
+    --pad: clamp(20px, 5vw, 48px);
+
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  a:hover { color: var(--ink); }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  h1, h2, h3 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .mono {
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(237, 234, 226, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .topbar-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .topbar nav {
+    display: flex;
+    gap: clamp(12px, 3vw, 28px);
+    font-size: 0.85rem;
+  }
+  .topbar nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .topbar nav a:hover { color: var(--accent); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding-top: clamp(48px, 9vw, 96px);
+    padding-bottom: clamp(40px, 7vw, 72px);
+  }
+
+  .id-block {
+    display: inline-block;
+    border: 1px solid var(--line);
+    padding: 10px 16px;
+    margin-bottom: 28px;
+  }
+  .id-row {
+    display: flex;
+    gap: 10px;
+    font-size: 0.78rem;
+  }
+  .id-row + .id-row { margin-top: 4px; }
+  .id-label {
+    color: var(--ink-faint);
+    min-width: 76px;
+  }
+  .id-value { color: var(--ink); }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    max-width: 14ch;
+    letter-spacing: -0.01em;
+  }
+  .hero .lede {
+    margin-top: 20px;
+    max-width: 52ch;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+
+  .hero .actions {
+    margin-top: 28px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.82rem;
+    padding: 10px 18px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--paper);
+  }
+  .btn.primary:hover { background: var(--ink); border-color: var(--ink); }
+
+  /* a single, restrained load-in flourish */
+  .hero-mark {
+    width: 46px;
+    height: 3px;
+    background: var(--accent-warm);
+    margin-bottom: 22px;
+    transform-origin: left;
+    animation: draw-in 0.7s ease-out;
+  }
+  @keyframes draw-in {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  /* ---------- section shell ---------- */
+  section {
+    padding-top: clamp(40px, 6vw, 64px);
+    padding-bottom: clamp(40px, 6vw, 64px);
+    border-top: 1px solid var(--line);
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    color: var(--accent-warm);
+  }
+  .section-head h2 {
+    font-size: 1.4rem;
+  }
+
+  .section-alt {
+    background: var(--paper-2);
+  }
+
+  /* ---------- about ---------- */
+  .about p {
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+  .about p + p { margin-top: 14px; }
+
+  /* ---------- skills ---------- */
+  .skill-group + .skill-group {
+    margin-top: 26px;
+  }
+  .skill-group h3 {
+    font-size: 0.78rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+  }
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  /* ---------- projects ---------- */
+  .project-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .project {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 18px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+  }
+  .project:first-child { border-top: none; padding-top: 0; }
+  .project-num {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--ink-faint);
+    font-size: 0.85rem;
+    padding-top: 3px;
+  }
+  .project h3 {
+    font-size: 1.15rem;
+  }
+  .project .desc {
+    margin-top: 8px;
+    color: var(--ink-soft);
+    max-width: 58ch;
+  }
+  .project .tag-row {
+    margin-top: 14px;
+  }
+  .project .links {
+    margin-top: 12px;
+    display: flex;
+    gap: 16px;
+    font-size: 0.85rem;
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  /* ---------- experience timeline ---------- */
+  .timeline {
+    position: relative;
+    padding-left: 26px;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--line);
+  }
+  .tl-item {
+    position: relative;
+    padding-bottom: 30px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .tl-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+  .tl-item h3 {
+    font-size: 1.05rem;
+    margin-top: 4px;
+  }
+  .tl-item .role {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin-top: 2px;
+  }
+  .tl-item p {
+    margin-top: 8px;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    font-size: 0.95rem;
+  }
+
+  /* ---------- contact / footer ---------- */
+  .contact .lede {
+    max-width: 48ch;
+    color: var(--ink-soft);
+  }
+  .contact-links {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer {
+    padding: 24px var(--pad) 40px;
+    text-align: left;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  @media (max-width: 560px) {
+    .topbar nav { gap: 12px; }
+    .project { grid-template-columns: 1fr; }
+    .project-num { display: none; }
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <!-- EDIT: IDENTITY — replace "Bryan" if you want the nav label different -->
+      <a href="#top" class="topbar-name mono">Bryan</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <header class="hero wrap" id="top">
+      <div class="hero-mark" aria-hidden="true"></div>
+
+      <!-- EDIT: IDENTITY — role, location, availability -->
+      <div class="id-block mono">
+        <div class="id-row">
+          <span class="id-label">Role</span>
+          <span class="id-value">Developer / Technical Consultant</span>
+        </div>
+        <div class="id-row">
+          <span class="id-label">Based in</span>
+          <span class="id-value">[Your City, Country]</span>
+        </div>
+        <div class="id-row">
+          <span class="id-label">Available</span>
+          <span class="id-value">[Open to new projects / Booked through Month Year]</span>
+        </div>
+      </div>
+
+      <!-- EDIT: IDENTITY — headline -->
+      <h1>I build practical tools that solve real client problems.</h1>
+
+      <!-- EDIT: IDENTITY — one or two line summary -->
+      <p class="lede">
+        Short summary of what you do and who you do it for — e.g. the kinds
+        of clients you work with, the type of systems you build, and what
+        makes your approach different. Two sentences is plenty.
+      </p>
+
+      <div class="actions">
+        <!-- EDIT: link these to your real resume file and email -->
+        <a class="btn primary" href="mailto:you@example.com">Get in touch</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download résumé</a>
+      </div>
+    </header>
+
+    <section id="about" class="wrap about">
+      <div class="section-head">
+        <span class="section-num mono">01</span>
+        <h2>About</h2>
+      </div>
+      <!-- EDIT: ABOUT — replace with your real bio, 1–3 short paragraphs -->
+      <p>
+        This is where a short professional bio goes. Cover what you do,
+        the kinds of problems you like solving, and the path that got you
+        here — your background, what you specialize in, and what you're
+        looking for next.
+      </p>
+      <p>
+        Keep it in plain language and specific to you rather than generic
+        buzzwords. A sentence about how you work with clients (process,
+        communication style, what they can expect) is often more useful
+        here than a list of adjectives.
+      </p>
+    </section>
+
+    <section id="skills" class="wrap section-alt">
+      <div class="section-head">
+        <span class="section-num mono">02</span>
+        <h2>Skills</h2>
+      </div>
+
+      <!-- EDIT: SKILLS — rename groups and swap tags for your real stack -->
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <div class="tag-row">
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Frameworks &amp; Tools</h3>
+        <div class="tag-row">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Git</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Practices</h3>
+        <div class="tag-row">
+          <span class="tag">API design</span>
+          <span class="tag">Client discovery</span>
+          <span class="tag">System architecture</span>
+          <span class="tag">Testing</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="wrap">
+      <div class="section-head">
+        <span class="section-num mono">03</span>
+        <h2>Projects</h2>
+      </div>
+
+      <!-- EDIT: PROJECTS — duplicate a .project block for each project -->
+      <div class="project-list">
+
+        <div class="project">
+          <span class="project-num mono">01</span>
+          <div>
+            <h3>Project name</h3>
+            <p class="desc">
+              One or two sentences on what this was, who it was for, and
+              the problem it solved. Focus on the outcome, not just the
+              tech.
+            </p>
+            <div class="tag-row">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <div class="links">
+              <a href="#">Live site</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project">
+          <span class="project-num mono">02</span>
+          <div>
+            <h3>Project name</h3>
+            <p class="desc">
+              One or two sentences on what this was, who it was for, and
+              the problem it solved. Focus on the outcome, not just the
+              tech.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">AWS</span>
+            </div>
+            <div class="links">
+              <a href="#">Live site</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project">
+          <span class="project-num mono">03</span>
+          <div>
+            <h3>Project name</h3>
+            <p class="desc">
+              One or two sentences on what this was, who it was for, and
+              the problem it solved. Focus on the outcome, not just the
+              tech.
+            </p>
+            <div class="tag-row">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Next.js</span>
+            </div>
+            <div class="links">
+              <a href="#">Live site</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="experience" class="wrap section-alt">
+      <div class="section-head">
+        <span class="section-num mono">04</span>
+        <h2>Experience</h2>
+      </div>
+
+      <!-- EDIT: EXPERIENCE — duplicate a .tl-item for each role -->
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date mono">Month Year — Present</div>
+          <h3>Job title</h3>
+          <div class="role">Company name</div>
+          <p>One or two lines on scope and impact — what you owned and what changed because of it.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date mono">Month Year — Month Year</div>
+          <h3>Job title</h3>
+          <div class="role">Company name</div>
+          <p>One or two lines on scope and impact — what you owned and what changed because of it.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date mono">Month Year — Month Year</div>
+          <h3>Job title</h3>
+          <div class="role">Company name</div>
+          <p>One or two lines on scope and impact — what you owned and what changed because of it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap contact">
+      <div class="section-head">
+        <span class="section-num mono">05</span>
+        <h2>Contact</h2>
+      </div>
+      <!-- EDIT: CONTACT — swap in your real details -->
+      <p class="lede">
+        The best way to reach me is by email. I usually reply within a
+        day or two.
+      </p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:you@example.com">you@example.com</a>
+        <a class="btn" href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <!-- EDIT: CONTACT — change the name/year here too -->
+    © <span id="year"></span> Bryan. Built with plain HTML, CSS, and no framework.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
